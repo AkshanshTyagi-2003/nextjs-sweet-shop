@@ -76,6 +76,9 @@ The UI follows a consistent **pink purple gradient glassmorphism theme** across 
 ### Admin Panel – Sweet
 <img width="1362" height="630" alt="image" src="https://github.com/user-attachments/assets/82094a6c-9c33-48fc-a561-18e04cbd6c67" />
 
+### Admin Panel – Users
+<img width="1365" height="633" alt="image" src="https://github.com/user-attachments/assets/954fc89f-cb5d-4ade-b2ba-c5968f87e57f" />
+
 ### Profile ( User + Admin )
 <img width="1349" height="633" alt="image" src="https://github.com/user-attachments/assets/73b80b1a-8f7e-48e7-9946-162724f8e652" />
 
