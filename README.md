@@ -1,36 +1,305 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🍬 Sweet Shop Management System
 
-## Getting Started
+A production ready full stack Sweet Shop Management System built with Next.js App Router, Prisma, SQLite, and Tailwind CSS, featuring role based access control, a modern glassmorphism UI, and a complete Admin Panel for managing users, sweets, and orders.
 
-First, run the development server:
+The application is deployed on Vercel and follows clean architecture, secure authentication practices, and scalable backend design.
 
-```bash
+📌 Project Overview
+
+The Sweet Shop Management System allows users to browse and purchase sweets, while administrators manage inventory, users, and orders through a dedicated admin interface.
+
+Authentication is handled using JWT stored in cookies, and authorization is strictly enforced at both UI and API levels.
+
+The UI follows a consistent pink purple gradient glassmorphism theme across the Dashboard, Profile, Admin Panel, and modals to provide a modern and cohesive user experience.
+
+✨ Features
+👤 User Features
+
+Browse sweets with name, category, price, and available stock
+
+Select quantity and purchase sweets
+
+Purchase confirmation modal with price breakdown
+
+Stock validation before order placement
+
+Toast notifications for success and error states
+
+Orders persisted permanently in the database
+
+Profile page displaying name, email, and role with styled glass UI
+
+🛠️ Admin Features
+
+Dedicated Admin Panel accessible only to admins
+
+Tab based navigation:
+
+Users
+
+Sweets
+
+Orders
+
+Pagination with 10 records per page
+
+Circular next and previous pagination buttons always visible
+
+Admin UI matches Profile styling (glassmorphism + gradient background)
+
+Tables rendered directly on background without cards
+
+Add, update, and delete sweets
+
+Edit and delete modals with validation and toast notifications
+
+Admin only APIs protected using requireAuth and requireAdmin
+
+Orders table includes:
+
+userName
+
+userEmail
+
+userRole
+
+sweetName
+
+sweetCategory
+
+pricePerUnit
+
+quantity
+
+totalPrice
+
+createdAt
+
+🧰 Tech Stack
+Frontend
+
+Next.js App Router
+
+React
+
+Tailwind CSS
+
+Lucide Icons
+
+Backend
+
+Next.js API Routes
+
+Prisma ORM
+
+Database
+
+SQLite
+
+Authentication
+
+JWT based authentication
+
+Tokens stored securely in cookies
+
+Deployment
+
+Vercel
+
+📁 Folder Structure
+src/
+├── app/
+│   ├── api/
+│   │   ├── admin/
+│   │   │   ├── users/route.ts
+│   │   │   ├── orders/route.ts
+│   │   │   └── sweets/[id]/route.ts
+│   │   ├── sweets/
+│   │   │   ├── route.ts
+│   │   │   └── [id]/purchase/route.ts
+│   │   └── me/route.ts
+│   ├── admin/page.tsx
+│   ├── dashboard/page.tsx
+│   ├── orders/page.tsx
+│   ├── profile/page.tsx
+│   └── login/page.tsx
+│
+├── components/
+│   ├── Sidebar.tsx
+│   ├── Navbar.tsx
+│   ├── SweetCard.tsx
+│   ├── admin/
+│   │   ├── AddSweetModal.tsx
+│   │   ├── EditSweetModal.tsx
+│   │   └── DeleteSweetModal.tsx
+│
+├── lib/
+│   ├── api.ts
+│   ├── db.ts
+│   └── jwt.ts
+│
+├── middleware/
+│   ├── auth.middleware.ts
+│   └── admin.middleware.ts
+│
+├── services/
+│   └── sweet.service.ts
+│
+├── types/
+│   ├── sweet.ts
+│   └── user.ts
+│
+├── prisma/
+│   └── schema.prisma
+│
+└── styles/
+    └── globals.css
+
+🗄️ Database Schema
+User
+
+id
+
+name
+
+email
+
+password
+
+role
+
+createdAt
+
+Sweet
+
+id
+
+name
+
+category
+
+price
+
+quantity
+
+createdAt
+
+Order
+
+id
+
+userId
+
+sweetId
+
+userName
+
+userEmail
+
+userRole
+
+sweetName
+
+sweetCategory
+
+pricePerUnit
+
+quantity
+
+totalPrice
+
+createdAt
+
+🌐 API Endpoints
+Public
+
+GET /api/sweets
+
+POST /api/sweets/:id/purchase
+
+Auth Protected
+
+GET /api/me
+
+Admin Protected
+
+POST /api/admin/sweets
+
+PUT /api/admin/sweets/:id
+
+DELETE /api/admin/sweets/:id
+
+GET /api/admin/users
+
+GET /api/admin/orders
+
+🔐 Authentication Flow
+
+User logs in and receives a JWT
+
+JWT is stored securely in cookies
+
+requireAuth validates the token from the request
+
+requireAdmin checks admin role from decoded JWT payload
+
+Both API routes and UI components enforce role based access
+
+⚙️ Local Setup Instructions
+Clone the repository
+git clone <repository-url>
+cd sweet-shop
+
+Install dependencies
+npm install
+
+Setup Prisma
+npx prisma generate
+npx prisma db push
+
+Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🔑 Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a .env file in the root directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="your_jwt_secret"
 
-## Learn More
+🚀 Deployment to Vercel
 
-To learn more about Next.js, take a look at the following resources:
+Push the project to GitHub
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Import the repository in Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Add environment variables:
 
-## Deploy on Vercel
+DATABASE_URL
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+JWT_SECRET
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy
+
+Prisma with SQLite works seamlessly on Vercel for this setup.
+
+🧪 Bug Fixes Completed
+
+Fixed duplicate card updates caused by object reference reuse
+
+Resolved Admin Panel disappearance on /orders route using token safety checks
+
+Properly handled foreign key delete constraints
+
+Fixed modal state desynchronization issues
+
+Standardized toast notification behavior
+
+Isolated pagination state to prevent cross tab conflicts
+
+📌 Status
+
+✅ Feature complete
+✅ Production ready
+✅ Secure and scalable
+✅ Deployed on Vercel
