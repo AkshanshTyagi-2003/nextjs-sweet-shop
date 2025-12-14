@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { apiRequest } from "../../lib/api";
-import { saveToken } from "../../lib/auth";
 import { useRouter } from "next/navigation";
 import { Mail, Lock, Info } from "lucide-react";
 
@@ -31,7 +30,7 @@ export default function LoginPage() {
       return;
     }
 
-    saveToken(data.token);
+    // ✅ Cookie is already set by backend
     localStorage.setItem("login_success", "true");
     router.push("/dashboard");
   }
@@ -76,7 +75,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* ✅ Admin Credentials Note Card */}
           <div className="rounded-xl bg-white/20 backdrop-blur-md border border-white/30 p-4 text-white/90">
             <div className="flex items-center gap-2 mb-2">
               <Info size={18} className="text-white/80" />
