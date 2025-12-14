@@ -16,24 +16,26 @@ export default function LoginPage() {
   const [error, setError] = useState("");
 
   async function handleLogin(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    const { ok, data } = await apiRequest(
-      "POST",
-      "/api/auth/login",
-      form
-    );
+  const { ok, data } = await apiRequest(
+    "POST",
+    "/api/auth/login",
+    form
+  );
 
-    if (!ok) {
-      setError(data?.error || "Login failed");
-      return;
-    }
-
-    // ✅ Cookie is already set by backend
-    localStorage.setItem("login_success", "true");
-    router.push("/dashboard");
+  if (!ok) {
+    setError(data?.error || "Login failed");
+    return;
   }
+
+  localStorage.setItem("login_success", "true");
+
+  // ✅ FORCE FULL NAVIGATION SO MIDDLEWARE WORKS
+  window.location.href = "/dashboard";
+}
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-700 via-pink-600 to-purple-900">
