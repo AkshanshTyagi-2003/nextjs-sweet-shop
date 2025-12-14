@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
-const SECRET = process.env.JWT_SECRET || "defaultsecret";
+const SECRET = process.env.JWT_SECRET!;
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -22,30 +22,23 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // READ TOKEN FROM COOKIES
   const token = req.cookies.get("token")?.value;
 
-  // ✅ API ROUTES: RETURN JSON (NO REDIRECT)
+  // ✅ API ROUTES: RETURN JSON
   if (pathname.startsWith("/api")) {
     if (!token) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     try {
       jwt.verify(token, SECRET);
       return NextResponse.next();
     } catch {
-      return NextResponse.json(
-        { error: "Invalid token" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
   }
 
-  // ✅ PAGE ROUTES: REDIRECT
+  // ✅ PAGE ROUTES
   if (!token) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
@@ -53,8 +46,7 @@ export function middleware(req: NextRequest) {
   try {
     const user = jwt.verify(token, SECRET) as any;
 
-    // ADMIN ONLY ROUTES
-    if (pathname.startsWith("/admin") && user.role !== "admin") {
+    if (pathname.startsWith("/admin") && user.role !== "ADMIN") {
       return NextResponse.redirect(new URL("/dashboard", req.url));
     }
 
