@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -14,7 +14,7 @@ model User {
   password  String
   role      String   @default("USER")
 
-  orders    Order[]   // required for relation
+  orders    Order[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -27,7 +27,7 @@ model Sweet {
   price     Int
   quantity  Int
 
-  orders    Order[]   // required for relation
+  orders    Order[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -36,26 +36,22 @@ model Sweet {
 model Order {
   id            String   @id @default(cuid())
 
-  // Relations
   userId        String
   sweetId       String
 
   user          User    @relation(fields: [userId], references: [id])
   sweet         Sweet   @relation(fields: [sweetId], references: [id])
 
-  // Snapshot of user data
   userName      String
   userEmail     String
   userRole      String
 
-  // Snapshot of sweet data
   sweetName     String
   sweetCategory String
   pricePerUnit  Int
 
-  // Purchase details
   quantity      Int
-  totalPrice   Int
+  totalPrice    Int
 
   createdAt     DateTime @default(now())
 }
