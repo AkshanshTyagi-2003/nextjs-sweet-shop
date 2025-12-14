@@ -89,7 +89,7 @@ The UI follows a consistent **pink purple gradient glassmorphism theme** across 
 <img width="1365" height="633" alt="image" src="https://github.com/user-attachments/assets/954fc89f-cb5d-4ade-b2ba-c5968f87e57f" />
 
 ### Profile ( User + Admin )
-<img width="1349" height="633" alt="image" src="https://github.com/user-attachments/assets/73b80b1a-8f7e-48e7-9946-162724f8e652" />
+<img width="1351" height="633" alt="image" src="https://github.com/user-attachments/assets/1dbc7028-7e89-4c76-a3a0-6f66fce9a5b3" />
 
 ### Dark Theme - Orders ( User )
 <img width="1365" height="632" alt="image" src="https://github.com/user-attachments/assets/dcd36a15-22f4-468e-ad6d-7bb5c67a603f" />
