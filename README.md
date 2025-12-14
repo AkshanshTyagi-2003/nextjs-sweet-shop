@@ -70,6 +70,15 @@ The UI follows a consistent **pink purple gradient glassmorphism theme** across 
 ### Admin Dashboard
 <img width="1350" height="632" alt="image" src="https://github.com/user-attachments/assets/fe55cee0-6e01-47d1-8138-a3cea58e84e3" />
 
+### Admin Dashboard ( Page of Sweet Addition )
+<img width="1352" height="633" alt="image" src="https://github.com/user-attachments/assets/024e9774-642c-4e49-b96f-1b679748f26d" />
+
+### Admin Dashboard ( Page of Sweet Updation )
+<img width="1350" height="629" alt="image" src="https://github.com/user-attachments/assets/e93430b8-d8be-4020-9442-43077e9069c7" />
+
+### Admin Dashboard ( Page of Sweet Deletion )
+<img width="1351" height="632" alt="image" src="https://github.com/user-attachments/assets/09bd285d-f2cb-4226-a4ef-b47d54e2e1ef" />
+
 ### Admin Panel – Orders
 <img width="1348" height="632" alt="image" src="https://github.com/user-attachments/assets/8e8161c7-843a-481a-a994-dca9e838bee3" />
 
