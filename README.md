@@ -68,7 +68,7 @@ The UI follows a consistent **pink purple gradient glassmorphism theme** across 
 <img width="1364" height="634" alt="image" src="https://github.com/user-attachments/assets/9e6f604b-c09a-4d74-9fc7-03e28893a70e" />
 
 ### Admin Dashboard
-<img width="1350" height="630" alt="image" src="https://github.com/user-attachments/assets/e00f4dfd-7a7f-4855-b99a-5403797f761c" />
+<img width="1350" height="632" alt="image" src="https://github.com/user-attachments/assets/fe55cee0-6e01-47d1-8138-a3cea58e84e3" />
 
 ### Admin Panel – Orders
 <img width="1348" height="632" alt="image" src="https://github.com/user-attachments/assets/8e8161c7-843a-481a-a994-dca9e838bee3" />
