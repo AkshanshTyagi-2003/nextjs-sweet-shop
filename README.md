@@ -27,9 +27,7 @@ The UI follows a consistent **pink purple gradient glassmorphism theme** across 
 - Orders persisted permanently in the database
 - Profile page displaying **name, email, and role** with styled glass UI
 
----
-
-## 🛠️ Admin Features
+### Admin Features
 
 - Dedicated **Admin Panel** accessible only to admins
 - Tab based navigation:
@@ -55,6 +53,38 @@ The UI follows a consistent **pink purple gradient glassmorphism theme** across 
   - createdAt
 
 ---
+
+---
+
+## 🖼️ Screenshots
+
+### Register Page
+<img width="1365" height="633" alt="image" src="https://github.com/user-attachments/assets/08c6a0d2-d77f-4083-8ce9-4cddad63025f" />
+
+### Login Page
+<img width="1365" height="630" alt="image" src="https://github.com/user-attachments/assets/8a20ae6e-45e1-42aa-89d2-911744eb40d8" />
+
+### User Dashboard
+<img width="1364" height="634" alt="image" src="https://github.com/user-attachments/assets/9e6f604b-c09a-4d74-9fc7-03e28893a70e" />
+
+### Admin Dashboard
+<img width="1350" height="630" alt="image" src="https://github.com/user-attachments/assets/e00f4dfd-7a7f-4855-b99a-5403797f761c" />
+
+### Admin Panel – Orders
+<img width="1348" height="632" alt="image" src="https://github.com/user-attachments/assets/8e8161c7-843a-481a-a994-dca9e838bee3" />
+
+### Admin Panel – Sweet
+<img width="1362" height="630" alt="image" src="https://github.com/user-attachments/assets/82094a6c-9c33-48fc-a561-18e04cbd6c67" />
+
+### Profile ( User + Admin )
+<img width="1349" height="633" alt="image" src="https://github.com/user-attachments/assets/73b80b1a-8f7e-48e7-9946-162724f8e652" />
+
+### Dark Theme - Orders ( User )
+<img width="1365" height="632" alt="image" src="https://github.com/user-attachments/assets/dcd36a15-22f4-468e-ad6d-7bb5c67a603f" />
+
+
+---
+
 
 ## 🧰 Tech Stack
 ### Frontend
