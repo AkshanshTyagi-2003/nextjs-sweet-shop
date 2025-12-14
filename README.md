@@ -1,112 +1,88 @@
-🍬 Sweet Shop Management System
+# Sweet Shop Management System
 
-A production ready full stack Sweet Shop Management System built with Next.js App Router, Prisma, SQLite, and Tailwind CSS, featuring role based access control, a modern glassmorphism UI, and a complete Admin Panel for managing users, sweets, and orders.
+A production ready full stack Sweet Shop Management System built with **Next.js App Router, Prisma, SQLite**, and **Tailwind CSS**, featuring **role based access control**, a modern **glassmorphism UI**, and a complete **Admin Panel** for managing users, sweets, and orders.
 
 The application is deployed on Vercel and follows clean architecture, secure authentication practices, and scalable backend design.
 
-📌 Project Overview
+---
+
+## 📌 Project Overview
 
 The Sweet Shop Management System allows users to browse and purchase sweets, while administrators manage inventory, users, and orders through a dedicated admin interface.
 
-Authentication is handled using JWT stored in cookies, and authorization is strictly enforced at both UI and API levels.
+Authentication is handled using **JWT stored in cookies**, and authorization is strictly enforced at **both UI and API levels**.
 
-The UI follows a consistent pink purple gradient glassmorphism theme across the Dashboard, Profile, Admin Panel, and modals to provide a modern and cohesive user experience.
+The UI follows a consistent **pink purple gradient glassmorphism theme** across the Dashboard, Profile, Admin Panel, and modals to provide a modern and cohesive user experience.
 
-✨ Features
-👤 User Features
+---
 
-Browse sweets with name, category, price, and available stock
+## ✨ Features
+### User Features
 
-Select quantity and purchase sweets
+- Browse sweets with **name, category, price, and available stock**
+- Select quantity and purchase sweets
+- Purchase confirmation modal with **price breakdown**
+- **Stock validation** before order placement
+- Toast notifications for success and error states
+- Orders persisted permanently in the database
+- Profile page displaying **name, email, and role** with styled glass UI
 
-Purchase confirmation modal with price breakdown
+---
 
-Stock validation before order placement
+## 🛠️ Admin Features
 
-Toast notifications for success and error states
+- Dedicated **Admin Panel** accessible only to admins
+- Tab based navigation:
+  - Users
+  - Sweets
+  - Orders
+- Pagination with **10 records per page**
+- Circular next and previous pagination buttons always visible
+- Admin UI matches Profile styling (glassmorphism + gradient background)
+- Tables rendered directly on background without cards
+- Add, update, and delete sweets
+- Edit and delete modals with validation and toast notifications
+- Admin only APIs protected using `requireAuth` and `requireAdmin`
+- Orders table includes:
+  - userName
+  - userEmail
+  - userRole
+  - sweetName
+  - sweetCategory
+  - pricePerUnit
+  - quantity
+  - totalPrice
+  - createdAt
 
-Orders persisted permanently in the database
+---
 
-Profile page displaying name, email, and role with styled glass UI
+## 🧰 Tech Stack
+### Frontend
 
-🛠️ Admin Features
+- Next.js App Router
+- React
+- Tailwind CSS
+- Lucide Icons
+  
+### Backend
+- Next.js API Routes
+- Prisma ORM
 
-Dedicated Admin Panel accessible only to admins
+### Database
+- SQLite
 
-Tab based navigation:
+### Authentication
+- JWT based authentication
+- Tokens stored securely in cookies
 
-Users
+### Deployment
+- Vercel
 
-Sweets
+---
 
-Orders
+## 📁 Folder Structure
 
-Pagination with 10 records per page
-
-Circular next and previous pagination buttons always visible
-
-Admin UI matches Profile styling (glassmorphism + gradient background)
-
-Tables rendered directly on background without cards
-
-Add, update, and delete sweets
-
-Edit and delete modals with validation and toast notifications
-
-Admin only APIs protected using requireAuth and requireAdmin
-
-Orders table includes:
-
-userName
-
-userEmail
-
-userRole
-
-sweetName
-
-sweetCategory
-
-pricePerUnit
-
-quantity
-
-totalPrice
-
-createdAt
-
-🧰 Tech Stack
-Frontend
-
-Next.js App Router
-
-React
-
-Tailwind CSS
-
-Lucide Icons
-
-Backend
-
-Next.js API Routes
-
-Prisma ORM
-
-Database
-
-SQLite
-
-Authentication
-
-JWT based authentication
-
-Tokens stored securely in cookies
-
-Deployment
-
-Vercel
-
-📁 Folder Structure
+```
 src/
 ├── app/
 │   ├── api/
@@ -155,151 +131,140 @@ src/
 └── styles/
     └── globals.css
 
-🗄️ Database Schema
-User
+```
 
-id
+---
 
-name
+## 🗄️ Database Schema
 
-email
+### User
 
-password
+- id
+- name
+- email
+- password
+- role
+- createdAt
 
-role
+### Sweet
 
-createdAt
+- id
+- name
+- category
+- price
+- quantity
+- createdAt
 
-Sweet
+### Order
 
-id
+- id
+- userId
+- sweetId
+- userName
+- userEmail
+- userRole
+- sweetName
+- sweetCategory
+- pricePerUnit
+- quantity
+- totalPrice
+- createdAt
 
-name
+---
 
-category
+## 🌐 API Endpoints
 
-price
+### Public
+- `GET /api/sweets`
+- `POST /api/sweets/:id/purchase`
 
-quantity
+### Auth Protected
+- `GET /api/me`
 
-createdAt
+### Admin Protected
 
-Order
+- `POST /api/admin/sweets`
+- `PUT /api/admin/sweets/:id`
+- `DELETE /api/admin/sweets/:id`
+- `GET /api/admin/users`
+- `GET /api/admin/orders`
 
-id
+---
 
-userId
+## 🔐 Authentication Flow
 
-sweetId
+- User logs in and receives a JWT
+- JWT is stored securely in cookies
+- `requireAuth` validates the token from the request
+- `requireAdmin` checks admin role from decoded JWT payload
+- Both API routes and UI components enforce role based access
 
-userName
+---
 
-userEmail
-
-userRole
-
-sweetName
-
-sweetCategory
-
-pricePerUnit
-
-quantity
-
-totalPrice
-
-createdAt
-
-🌐 API Endpoints
-Public
-
-GET /api/sweets
-
-POST /api/sweets/:id/purchase
-
-Auth Protected
-
-GET /api/me
-
-Admin Protected
-
-POST /api/admin/sweets
-
-PUT /api/admin/sweets/:id
-
-DELETE /api/admin/sweets/:id
-
-GET /api/admin/users
-
-GET /api/admin/orders
-
-🔐 Authentication Flow
-
-User logs in and receives a JWT
-
-JWT is stored securely in cookies
-
-requireAuth validates the token from the request
-
-requireAdmin checks admin role from decoded JWT payload
-
-Both API routes and UI components enforce role based access
-
-⚙️ Local Setup Instructions
-Clone the repository
+## ⚙️ Local Setup Instructions
+### Clone the repository
+```
 git clone <repository-url>
 cd sweet-shop
+```
 
-Install dependencies
+### Install dependencies
+```
 npm install
+```
 
-Setup Prisma
+### Setup Prisma
+```
 npx prisma generate
 npx prisma db push
+```
 
-Start development server
+### Start development server
+```
 npm run dev
+```
 
-🔑 Environment Variables
+---
 
-Create a .env file in the root directory:
+## 🔑 Environment Variables
 
+Create a `.env` file in the root directory:
+```
 DATABASE_URL="file:./dev.db"
 JWT_SECRET="your_jwt_secret"
+```
 
-🚀 Deployment to Vercel
+---
 
-Push the project to GitHub
+## 🚀 Deployment to Vercel
 
-Import the repository in Vercel
-
-Add environment variables:
-
-DATABASE_URL
-
-JWT_SECRET
-
-Deploy
+- Push the project to GitHub
+- Import the repository in Vercel
+- Add environment variables:
+  - DATABASE_URL
+  - JWT_SECRET
+- Deploy
 
 Prisma with SQLite works seamlessly on Vercel for this setup.
 
-🧪 Bug Fixes Completed
+---
 
-Fixed duplicate card updates caused by object reference reuse
+## 🧪 Bug Fixes Completed
 
-Resolved Admin Panel disappearance on /orders route using token safety checks
+- Fixed duplicate card updates caused by object reference reuse
+- Resolved Admin Panel disappearance on `/orders` route using token safety checks
+- Properly handled foreign key delete constraints
+- Fixed modal state desynchronization issues
+- Standardized toast notification behavior
+- Isolated pagination state to prevent cross tab conflicts
 
-Properly handled foreign key delete constraints
+---
 
-Fixed modal state desynchronization issues
+## 📌 Status
 
-Standardized toast notification behavior
+✅ Feature complete<br>
+✅ Production ready<br>
+✅ Secure and scalable<br>
+✅ Deployed on Vercel<br>
 
-Isolated pagination state to prevent cross tab conflicts
-
-📌 Status
-
-✅ Feature complete
-✅ Production ready
-✅ Secure and scalable
-✅ Deployed on Vercel
+---
