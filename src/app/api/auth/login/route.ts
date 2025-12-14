@@ -32,12 +32,11 @@ export async function POST(req: Request) {
       { status: 200 }
     );
 
-    // ✅ FINAL CORRECT COOKIE CONFIG
     response.cookies.set("token", user.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax", // 🔥 THIS WAS THE MISSING PIECE
-      path: "/",       // 🔥 REQUIRED
+      secure: true,
+      sameSite: "none",
+      path: "/",
     });
 
     return response;
